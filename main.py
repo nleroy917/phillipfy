@@ -6,7 +6,7 @@ load_dotenv()
 
 from Phillipfy.Phillipfy import Phillipfy
 
-app = Phillipfy()
+app = Phillipfy(room='Bedroom')
 
 if __name__ == '__main__':
     app.run()
