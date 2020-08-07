@@ -4,14 +4,10 @@ from dotenv import load_dotenv
 import requests
 load_dotenv()
 
-HUE_IP = os.environ.get('HUE_IP')
-IP_URL = os.environ.get('IP_URL')
+from lib.Phillipfy import Phillipfy
 
-res = requests.get(IP_URL)
-ip_data = res.json()[0]
-ID = ip_data['id']
-INTERNALIP = ip_data['internalipaddress']
+app = Phillipfy()
 
-b = Bridge(INTERNALIP,ID)
-b.connect()
-bridge = b.get_api()
+app.run()
+
+
