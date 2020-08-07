@@ -1,3 +1,4 @@
+import phue
 from phue import Bridge
 import requests
 import time
@@ -24,7 +25,11 @@ class Phillipfy():
         ip_data = res.json()[0]
         self._ID = ip_data['id']
         self._INTERNALIP = ip_data['internalipaddress']
-        self._bridge = Bridge(self._INTERNALIP)
+        try:
+            self._bridge = Bridge(self._INTERNALIP)
+        except phue.PhueRegistrationException:
+            print('Error! The link button probably hasnt been pressed on your Hue Bridge. Do this and start the app within 30 seconds - it only needs to be done once!')
+            sys.exit(1)
 
         # init helper objects and connect to bridge
         self._bridge.connect()
@@ -44,6 +49,9 @@ class Phillipfy():
 
         # init current song + color states
         self._current_song = self._sp.current_song()
+        if self._current_song == None:
+            print('Please start playing Spotify first!')
+            sys.exit(1)
         self._current_id = self._current_song['item']['id']
 
         print('Starting Phillipfy for {} (Group - {})'.format(self._room,self._group))
