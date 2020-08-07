@@ -4,10 +4,11 @@ from dotenv import load_dotenv
 import requests
 load_dotenv()
 
-from lib.Phillipfy import Phillipfy
+from Phillipfy.Phillipfy import Phillipfy
 
 app = Phillipfy()
 
-app.run()
+if __name__ == '__main__':
+    app.run()
 
 
