@@ -126,6 +126,9 @@ class Phillipfy():
         try:
             while True:
                 self._current_song = self._get_current_song()
+                if self._current_song is None:
+                    print('Please start playing Spotify first!')
+                    sys.exit(1)
                 if self._current_song['item']['id'] == self._current_id:
                     pass
                     time.sleep(3)
