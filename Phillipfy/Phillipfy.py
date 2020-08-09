@@ -137,7 +137,7 @@ class Phillipfy():
                     song = self._get_song_name(self._current_song)
                     artist = self._get_artist(self._current_song)
                     print('Now playing - {}, {}'.format(song, artist))
-                    colors = self._extract_colors(self._current_song)
+                    colors = self._extract_colors(self._current_song, n=len(self._lights))
                     self._set_colors(colors)
 
         except KeyboardInterrupt:
