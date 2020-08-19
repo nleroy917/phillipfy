@@ -101,7 +101,7 @@ class Phillipfy():
         '''
         return song['item']['artists'][0]['name']
 
-    def _extract_colors(self, current_song):
+    def _extract_colors(self, current_song,n):
         url = current_song['item']['album']['images'][0]['url']
         return self._util.extract_colors(url, n=len(self._lights))
 
@@ -137,7 +137,7 @@ class Phillipfy():
                     song = self._get_song_name(self._current_song)
                     artist = self._get_artist(self._current_song)
                     print('Now playing - {}, {}'.format(song, artist))
-                    colors = self._extract_colors(self._current_song, n=len(self._lights))
+                    colors = self._extract_colors(self._current_song, len(self._lights))
                     self._set_colors(colors)
 
         except KeyboardInterrupt:

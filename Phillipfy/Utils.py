@@ -42,4 +42,4 @@ class Utils():
 
     def extract_colors(self, url, n=4):
         img = requests.get(url)
-        return colorgram.extract(img.content, n, url=True)
+        return colorgram.extract(img.content, n)
